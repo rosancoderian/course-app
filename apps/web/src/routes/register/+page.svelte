@@ -1,5 +1,7 @@
 <script lang="ts">
   import { applyAction, enhance } from '$app/forms'
+  import Input from '$lib/components/Input/Input.svelte'
+  import getFormError from '$lib/utils/getFormError'
 
   let errors: Record<string, any> = {}
   let isLoading = false
@@ -31,42 +33,10 @@
     class="flex flex-col items-center space-y-2 w-full pt-4"
   >
     <div class="form-control w-full max-w-md">
-      <label for="name" class="label font-medium pb-1">
-        <span class="label-text">Username</span>
-      </label>
-      <input type="text" name="username" class="input input-bordered" />
-      <span class="text-error"
-        >{errors?.username ? errors?.username?.message : ''}</span
-      >
-
-      <label for="name" class="label font-medium pb-1">
-        <span class="label-text">Email</span>
-      </label>
-      <input type="email" name="email" class="input input-bordered" />
-      <span class="text-error"
-        >{errors?.email ? errors?.email?.message : ''}</span
-      >
-
-      <label for="name" class="label font-medium pb-1">
-        <span class="label-text">Password</span>
-      </label>
-      <input type="password" name="password" class="input input-bordered" />
-      <span class="text-error"
-        >{errors?.password ? errors?.password?.message : ''}</span
-      >
-
-      <label for="name" class="label font-medium pb-1">
-        <span class="label-text">Password Confirm</span>
-      </label>
-      <input
-        type="password"
-        name="passwordConfirm"
-        class="input input-bordered"
-      />
-      <span class="text-error"
-        >{errors?.passwordConfirm ? errors?.passwordConfirm?.message : ''}</span
-      >
-
+      <Input type="text" label="Username" name="username" error={getFormError(errors, 'username')} />
+      <Input type="text" label="Email" name="email" error={getFormError(errors, 'email')} />
+      <Input type="password" label="Password" name="password" error={getFormError(errors, 'password')} />
+      <Input type="password" label="Password Confirm" name="passwordConfirm" error={getFormError(errors, 'passwordConfirm')} />
       <div class="pt-8">
         <button
           type="submit"
