@@ -1,6 +1,6 @@
 <script lang="ts">
   import './styles.scss'
-  // TODO: Typing
+  // TODO typing
   export let data: any
 </script>
 

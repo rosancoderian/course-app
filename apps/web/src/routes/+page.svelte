@@ -1,7 +1,7 @@
 <script lang="ts">
   import CourseCard from '$lib/components/CourseCard/CourseCard.svelte'
 
-  // TODO: Typing
+  // TODO typing
   export let data: { courses: any[] }
 
   $: courses = data.courses
