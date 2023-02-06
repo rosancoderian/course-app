@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "start": "npm run serve:pb & npm run dev:web",
     "serve:pb": " npm run serve -w @course-app/pocketbase",
-    "dev:web": " npm run dev -w @course-app/web",
-    "build:web": " npm run build -w @course-app/web"
+    "dev:web": " npm run dev -w @course-app/web"
   },
   "workspaces": [
     "packages/*",

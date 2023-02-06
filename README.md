@@ -3,8 +3,11 @@
 Only run in linux system
 
 - `npm install`
-- `npm run server:pb`
-- `npm run dev:web`
+- `npm run start`
+
+Web: [http://localhost:5173/](http://localhost:5173/)
+Web (Admin): [http://localhost:5173/](http://localhost:5173/admin)
+Pocketbase: [http://localhost:5173/](http://127.0.0.1:8090/_)
 
 # Stack
 
