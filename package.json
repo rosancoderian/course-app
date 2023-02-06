@@ -1,0 +1,14 @@
+{
+  "name": "course-app",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "serve:pb": " npm run serve -w @course-app/pocketbase",
+    "dev:web": " npm run dev -w @course-app/web",
+    "build:web": " npm run build -w @course-app/web"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "@course-app/pocketbase",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "./pocketbase serve"
+  },
+  "author": "",
+  "license": "ISC"
+}
