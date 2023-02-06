@@ -4,9 +4,7 @@ import pb from '$lib/pocketbase/pb'
 export const handle: Handle = async ({ event, resolve }) => {
   event.locals.pb = pb
 
-  event.locals.pb.authStore.loadFromCookie(
-    event.request.headers.get('cookie') ?? ''
-  )
+  event.locals.pb.authStore.loadFromCookie(event.request.headers.get('cookie') ?? '')
 
   if (pb.authStore.isValid) {
     event.locals.user = event.locals.pb.authStore.model

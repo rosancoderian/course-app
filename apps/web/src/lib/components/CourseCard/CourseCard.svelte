@@ -25,9 +25,7 @@
       {#if enrolled}
         <span class="font-bold text-primary mx-auto">EROLLED</span>
       {:else}
-        <label for={enrollModalId} class="btn btn-primary w-full">
-          Enroll
-        </label>
+        <label for={enrollModalId} class="btn btn-primary w-full"> Enroll </label>
         <EnrollModal
           id={enrollModalId}
           title={`Enroll to ${title}`}

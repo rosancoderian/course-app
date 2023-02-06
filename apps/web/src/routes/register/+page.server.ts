@@ -14,9 +14,7 @@ export const actions = {
 
     try {
       await locals.pb.collection('users').create(newUser)
-      await locals.pb
-        .collection('users')
-        .requestVerification(body.email as string)
+      await locals.pb.collection('users').requestVerification(body.email as string)
     } catch (err: any) {
       console.error('Error: ', err)
       return fail(err.status, { errors: err.data.data })

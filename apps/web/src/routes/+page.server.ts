@@ -14,9 +14,7 @@ export async function load(event: RequestEvent) {
       })
     )
 
-    const enrolledCourseIds = enrollments.map(
-      (enrollment) => enrollment.course_id
-    )
+    const enrolledCourseIds = enrollments.map((enrollment) => enrollment.course_id)
 
     courses = courses.map((course) => {
       return { ...course, enrolled: enrolledCourseIds.includes(course.id) }
