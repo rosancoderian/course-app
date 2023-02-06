@@ -1,12 +1,15 @@
 <script lang="ts">
+  export let id: string
   export let label: string
   export let name: string
-  export let type: string
-  export let error: string
+  export let type = 'text'
+  export let error = ''
+  export let disabled = false
+  export let required = false
 </script>
 
 <label for={name} class="label font-medium pb-1">
   <span class="label-text">{label}</span>
 </label>
-<input {type} {name} class="input input-bordered" />
+<input {id} {type} {name} {disabled} {required} class="input input-bordered" />
 <span class="text-error">{error ? error : ''}</span>
