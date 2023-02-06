@@ -5,9 +5,6 @@
   export let data: { courses: any[]; enrollments: any[] }
 
   $: courses = data.courses
-  $: {
-    console.log(data.courses)
-  }
 </script>
 
 <div>

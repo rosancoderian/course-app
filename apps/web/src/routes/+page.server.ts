@@ -1,6 +1,6 @@
 import pb from '$lib/pocketbase/pb'
 import toPOJO from '$lib/utils/toPOJO'
-import type { RequestEvent } from '@sveltejs/kit'
+import { fail, redirect, type RequestEvent } from '@sveltejs/kit'
 
 export async function load(event: RequestEvent) {
   // TODO typing
@@ -25,4 +25,28 @@ export async function load(event: RequestEvent) {
     courses,
     enrollments,
   }
+}
+
+export const actions = {
+  enroll: async ({ locals, url, request }: RequestEvent) => {
+    if (!locals.pb.authStore.isValid) {
+      throw redirect(303, '/login')
+    }
+
+    const body = Object.fromEntries(await request.formData())
+
+    const newErollment = {
+      course_id: body.courseId,
+      user_id: locals.user.id,
+    }
+
+    try {
+      await locals.pb.collection('enrollment').create(newErollment)
+    } catch (err: any) {
+      console.error('Error: ', err)
+      return fail(err.status, { errors: err.data.data })
+    }
+
+    throw redirect(303, '/')
+  },
 }
