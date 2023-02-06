@@ -15,7 +15,7 @@
     <h2 class="card-title">{title}</h2>
     <p>{desc}</p>
     <div class="card-actions">
-      <button class="btn btn-primary">Enroll</button>
+      <button class="btn btn-primary w-full">Enroll</button>
     </div>
   </div>
 </div>

@@ -5,5 +5,5 @@
   <p class="text-center mt-1">
     <slot name="subTitle" />
   </p>
-  <slot/>
+  <slot />
 </div>

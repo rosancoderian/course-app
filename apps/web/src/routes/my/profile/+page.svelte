@@ -1,3 +1,1 @@
-<div>
-  none
-</div>
+<div>none</div>

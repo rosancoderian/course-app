@@ -11,11 +11,7 @@
 <AccountLayout>
   <span slot="title">Register</span>
   <span slot="subTitle">
-    Or <a
-      href="/login"
-      class="link"
-      >Login
-    </a> with existing account
+    Or <a href="/login" class="link">Login </a> with existing account
   </span>
 
   <form
