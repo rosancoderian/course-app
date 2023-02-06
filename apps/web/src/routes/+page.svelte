@@ -7,10 +7,8 @@
   $: courses = data.courses
 </script>
 
-<div>
-  <div class="flex flex-wrap justify-center gap-4">
-    {#each courses as course}
-      <CourseCard {...course} />
-    {/each}
-  </div>
+<div class="flex flex-wrap justify-center gap-4">
+  {#each courses as course}
+    <CourseCard {...course} />
+  {/each}
 </div>

@@ -7,9 +7,8 @@
     menus={[
       // { label: 'My Profile', href: '/my/profile' },
       { label: 'My Courses', href: '/my/courses' },
-    ]}
-  />
-  <div class="border-l border-base-300 px-4 py-2">
+    ]} />
+  <div class="w-full border-l border-base-300 px-4 py-2">
     <slot />
   </div>
 </div>
