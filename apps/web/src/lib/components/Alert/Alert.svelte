@@ -2,7 +2,6 @@
   export let type: string
 
   const alertTypeClass = type ? `alert-${type}` : ''
-  console.log(alertTypeClass)
 </script>
 
 <div class={`alert ${alertTypeClass} shadow w-full max-w-md`}>
