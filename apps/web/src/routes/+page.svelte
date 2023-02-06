@@ -2,13 +2,16 @@
   import CourseCard from '$lib/components/CourseCard/CourseCard.svelte'
 
   // TODO typing
-  export let data: { courses: any[] }
+  export let data: { courses: any[]; enrollments: any[] }
 
   $: courses = data.courses
+  $: {
+    console.log(data.courses)
+  }
 </script>
 
 <div>
-  <div class="flex justify-center gap-4">
+  <div class="flex flex-wrap justify-center gap-4">
     {#each courses as course}
       <CourseCard {...course} />
     {/each}

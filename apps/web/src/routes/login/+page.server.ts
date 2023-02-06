@@ -1,13 +1,20 @@
 import { error, fail, redirect } from '@sveltejs/kit'
+import type { RequestEvent } from '../$types'
+
+export const load = async ({ locals }: RequestEvent) => {
+  if (locals.pb.authStore.isValid) {
+    throw redirect(303, '/')
+  }
+}
 
 export const actions = {
-  login: async ({ locals, request }: any) => {
+  login: async ({ locals, request }: RequestEvent) => {
     const body = Object.fromEntries(await request.formData())
 
     try {
       await locals.pb
         .collection('users')
-        .authWithPassword(body.email, body.password)
+        .authWithPassword(body.email as string, body.password as string)
     } catch (err: any) {
       console.error('Error: ', err)
       return fail(err.status, { errors: err.data.data })

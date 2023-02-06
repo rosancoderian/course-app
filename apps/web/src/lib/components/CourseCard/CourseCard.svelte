@@ -6,22 +6,34 @@
   export let title = ''
   export let image = ''
   export let desc = ''
+  export let enrollAction = '/enroll'
+  export let enrolled = false
 
-  const imageUrl = `${PUBLIC_PB_BASE_URL}/api/files/courses/${id}/${image}`
-  const courseUrl = `course/${id}`
+  const imageSrc = `${PUBLIC_PB_BASE_URL}/api/files/courses/${id}/${image}`
+  const courseHref = `course/${id}`
   const enrollModalId = `enroll-modal-${id}`
 </script>
 
-<div class="card min-h-96 bg-base-100 border border-base-300 shadow-xl">
+<div class="card w-80 h-96 bg-base-100 border border-base-300 shadow-xl">
   <figure>
-    <img class="object-cover w-[320px] h-[240px]" src={imageUrl} alt={title} />
+    <img class="object-cover h-[240px]" src={imageSrc} alt={title} />
   </figure>
   <div class="card-body">
-    <h2 class="card-title link"><a href={courseUrl}>{title}</a></h2>
+    <h2 class="card-title link"><a href={courseHref}>{title}</a></h2>
     <p>{desc}</p>
     <div class="card-actions">
-      <label for={enrollModalId} class="btn btn-primary w-full"> Enroll </label>
-      <EnrollModal id={enrollModalId} title={`Enroll to ${title}`} />
+      {#if enrolled}
+        <span class="font-bold text-primary mx-auto">EROLLED</span>
+      {:else}
+        <label for={enrollModalId} class="btn btn-primary w-full">
+          Enroll
+        </label>
+        <EnrollModal
+          id={enrollModalId}
+          title={`Enroll to ${title}`}
+          action={enrollAction + `?id=${id}`}
+        />
+      {/if}
     </div>
   </div>
 </div>
