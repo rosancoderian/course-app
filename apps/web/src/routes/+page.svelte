@@ -8,7 +8,7 @@
 </script>
 
 <div>
-  <div class="flex gap-4">
+  <div class="flex justify-center gap-4">
     {#each courses as course}
       <CourseCard {...course} />
     {/each}
