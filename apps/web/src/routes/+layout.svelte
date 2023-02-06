@@ -30,7 +30,10 @@
             class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a href="/my/projects" class="justify-between">My Courses</a>
+              <a href="/my/profile" class="justify-between">My Profile</a>
+            </li>
+            <li>
+              <a href="/my/courses" class="justify-between">My Courses</a>
             </li>
             <li>
               <form action="/logout" method="POST">

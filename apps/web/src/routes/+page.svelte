@@ -10,7 +10,7 @@
 <div>
   <div class="flex gap-4">
     {#each courses as course}
-    <CourseCard {...course} />
-  {/each}
+      <CourseCard {...course} />
+    {/each}
   </div>
 </div>
