@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let isLoggedIn = false
+  export let user: any
 </script>
 
 <nav class="navbar bg-base-100 border-b">
@@ -8,7 +8,7 @@
       <a href="/" class="btn btn-ghost normal-case text-xl">Courses</a>
     </div>
     <div class="flex-none">
-      {#if !isLoggedIn}
+      {#if !user}
         <div class="dropdown dropdown-end">
           <a href="/login" class="btn btn-primary">Login</a>
           <a href="/register" class="btn btn-secondary">Register</a>
@@ -20,7 +20,7 @@
           <label tabindex="0" class="btn btn-ghost btn-circle avatar">
             <div class="w-10 rounded-full">
               <img
-                src={`https://ui-avatars.com/api/?name=${data.user.name}`}
+                src={`https://ui-avatars.com/api/?name=${user.name}`}
                 alt="User avatar"
               />
             </div>

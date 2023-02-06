@@ -7,7 +7,7 @@
 </script>
 
 <div class="min-h-full">
-  <Nav isLoggedIn={data.user} />
+  <Nav user={data.user} />
   <div class="py-10">
     <div class="container mx-auto sm:px-6 lg:px-8">
       <slot />
