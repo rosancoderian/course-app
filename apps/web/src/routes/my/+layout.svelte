@@ -5,8 +5,8 @@
 <div class="flex w-full h-full">
   <Menu
     menus={[
-      { label: 'My Profile', url: '/my/profile' },
-      { label: 'My Courses', url: '/my/courses' },
+      { label: 'My Profile', href: '/my/profile' },
+      { label: 'My Courses', hre: '/my/courses' },
     ]}
   />
   <div class="border-l border-base-300 px-4 py-2">
