@@ -17,7 +17,15 @@ export const actions = {
         .authWithPassword(body.email as string, body.password as string)
     } catch (err: any) {
       console.error('Error: ', err)
-      return fail(err.status, { errors: err.data.data })
+      return fail(err.status, {
+        errors: {
+          ...err.data.data,
+          auth: {
+            code: err.data.code,
+            message: err.data.message,
+          },
+        },
+      })
     }
 
     throw redirect(303, '/')

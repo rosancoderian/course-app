@@ -1,5 +1,6 @@
 <script lang="ts">
   import { applyAction, enhance } from '$app/forms'
+  import Alert from '$lib/components/Alert/Alert.svelte'
   import Input from '$lib/components/Input/Input.svelte'
   import AccountLayout from '$lib/layouts/AccountLayout/AccountLayout.svelte'
   import getFormError from '$lib/utils/getFormError'
@@ -13,6 +14,7 @@
   <span slot="subTitle">
     Or <a href="/register" class="link">Register </a> a new account
   </span>
+
   <form
     use:enhance={({ form, data, action, cancel }) => {
       isLoading = true
@@ -29,6 +31,9 @@
     method="POST"
     class="flex flex-col items-center space-y-2 w-full pt-4"
   >
+    {#if errors?.auth?.message}
+      <Alert type="warning">{errors?.auth?.message}</Alert>
+    {/if}
     <div class="form-control w-full max-w-md">
       <Input
         type="text"
