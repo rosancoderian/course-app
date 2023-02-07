@@ -1,6 +1,7 @@
 <script lang="ts">
   import { applyAction, enhance } from '$app/forms'
   import Alert from '$lib/components/Alert/Alert.svelte'
+  import Breadcrumbs from '$lib/components/Breadcrumbs/Breadcrumbs.svelte'
   import Field from '$lib/components/Field/Field.svelte'
   import Input from '$lib/components/Input/Input.svelte'
   import getError from '$lib/utils/getError'
@@ -16,6 +17,7 @@
   $: imageSrc = getFileUrl('courses', course.id, course.image)
 </script>
 
+<Breadcrumbs items={[{ label: 'Courses', href: '/_/courses' }, { label: course.id }]} />
 <form
   action="?/update"
   method="POST"
