@@ -18,25 +18,41 @@
           <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
           <!-- svelte-ignore a11y-label-has-associated-control -->
           <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-            <div class="w-10 rounded-full">
+            <div class="w-10 rounded-full  bg-base-300">
               <img
                 src={`https://ui-avatars.com/api/?name=${user.name}`}
-                alt="User avatar"
-              />
+                alt="User avatar" />
             </div>
           </label>
           <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
           <ul
             tabindex="0"
-            class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-          >
+            class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+            <li>
+              <a href="#" class="justify-between text-base-300 font-bold text-xs"
+                >User Menu</a>
+            </li>
             <!-- <li>
               <a href="/my/profile" class="justify-between">My Profile</a>
             </li> -->
             <li>
               <a href="/my/courses" class="justify-between">My Courses</a>
             </li>
-            <li>
+
+            {#if user.isAdmin}
+              <li class="border-t">
+                <a href="#" class="justify-between text-base-300 font-bold text-xs"
+                  >Admin Menu</a>
+              </li>
+              <li>
+                <a href="/my/courses" class="justify-between">Courses</a>
+              </li>
+              <li>
+                <a href="/my/courses" class="justify-between">Enrollments</a>
+              </li>
+            {/if}
+
+            <li class="border-t">
               <form action="/logout" method="POST">
                 <button type="submit" class="w-full text-start">Logout</button>
               </form>
