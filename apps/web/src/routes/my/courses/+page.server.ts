@@ -15,11 +15,13 @@ export async function load(event: RequestEvent) {
 
   const enrolledCourseIds = enrollments.map((enrollment) => enrollment.course_id)
 
-  courses = toPOJO(
-    await pb.collection('courses').getFullList(undefined, {
-      filter: enrolledCourseIds.map((id) => `id = "${id}"`).join(' || '),
-    })
-  )
+  if (enrolledCourseIds.length) {
+    courses = toPOJO(
+      await pb.collection('courses').getFullList(undefined, {
+        filter: enrolledCourseIds.map((id) => `id = "${id}"`).join(' || '),
+      })
+    )
+  }
 
   return {
     courses,

@@ -4,10 +4,6 @@
 </script>
 
 <AuthLayout>
-  <span slot="title">Login</span>
-  <span slot="subTitle">
-    Or <a href="/register" class="link">Register </a> a new account
-  </span>
-
+  <span slot="title">Admin Login</span>
   <LoginForm />
 </AuthLayout>
