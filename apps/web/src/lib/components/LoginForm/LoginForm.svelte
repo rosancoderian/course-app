@@ -11,10 +11,10 @@
 <form
   action="?/login"
   method="POST"
-  class="flex flex-col items-center space-y-2 w-full pt-4"
+  class="flex flex-col items-center gap-2 w-full pt-4"
   use:enhance={() => {
     isLoading = true
-    return async ({ result, update }) => {
+    return async ({ result }) => {
       isLoading = false
       if (result.type === 'failure') {
         errors = result?.data?.errors

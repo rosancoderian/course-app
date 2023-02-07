@@ -13,9 +13,9 @@
   const courseHref = `course/${id}`
 </script>
 
-<div class="card w-64 h-72 bg-base-100 border border-base-300 shadow-xl">
+<div class="card min-w-64 h-72 bg-base-100 border border-base-300 shadow-xl">
   <figure>
-    <img class="object-cover h-36" src={imageSrc} alt={title} />
+    <img class="object-cover w-full h-36" src={imageSrc} alt={title} />
   </figure>
   <div class="card-body p-4">
     <h2 class="card-title link"><a href={courseHref}>{title}</a></h2>
