@@ -22,6 +22,6 @@ export const actions = {
       })
     }
 
-    throw redirect(303, '/admin/courses')
+    throw redirect(303, '/_/courses')
   },
 }
