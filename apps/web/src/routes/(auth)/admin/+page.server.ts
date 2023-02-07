@@ -1,4 +1,5 @@
-import { error, fail, redirect, type RequestEvent } from '@sveltejs/kit'
+import createErrors from '$lib/utils/createErrors'
+import { fail, redirect, type RequestEvent } from '@sveltejs/kit'
 
 export const actions = {
   login: async ({ locals, request }: RequestEvent) => {
@@ -12,13 +13,7 @@ export const actions = {
     } catch (err: any) {
       console.error('Error: ', err)
       return fail(err.status, {
-        errors: {
-          ...err.data.data,
-          auth: {
-            code: err.data.code,
-            message: err.data.message,
-          },
-        },
+        errors: createErrors(err),
       })
     }
 

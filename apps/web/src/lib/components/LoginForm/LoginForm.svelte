@@ -23,8 +23,8 @@
       }
     }
   }}>
-  {#if errors?.auth?.message}
-    <Alert type="warning">{errors?.auth?.message}</Alert>
+  {#if errors?.default?.message}
+    <Alert type="warning">{errors?.default?.message}</Alert>
   {/if}
   <div class="form-control w-full max-w-md">
     <Input type="text" label="Email" name="email" error={getError(errors, 'email')} />

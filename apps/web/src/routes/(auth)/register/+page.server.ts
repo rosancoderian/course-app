@@ -1,3 +1,4 @@
+import createErrors from '$lib/utils/createErrors'
 import { error, fail, redirect, type RequestEvent } from '@sveltejs/kit'
 
 export const load = async ({ locals }: RequestEvent) => {
@@ -17,7 +18,7 @@ export const actions = {
       await locals.pb.collection('users').requestVerification(body.email as string)
     } catch (err: any) {
       console.error('Error: ', err)
-      return fail(err.status, { errors: err.data.data })
+      return fail(err.status, { errors: createErrors(err) })
     }
 
     throw redirect(303, '/login')
