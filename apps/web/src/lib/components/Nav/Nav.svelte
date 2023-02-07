@@ -45,11 +45,11 @@
                   >Admin Menu</a>
               </li>
               <li>
-                <a href="/my/courses" class="justify-between">Courses</a>
+                <a href="/_/courses" class="justify-between">Courses</a>
               </li>
-              <li>
-                <a href="/my/courses" class="justify-between">Enrollments</a>
-              </li>
+              <!-- <li>
+                <a href="/_/enrollments" class="justify-between">Enrollments</a>
+              </li> -->
             {/if}
 
             <li class="border-t">
