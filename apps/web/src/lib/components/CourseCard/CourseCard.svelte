@@ -7,7 +7,8 @@
   export let image = ''
   export let desc = ''
   export let enrolled = false
-  export let mode: 'enroll' | 'view' = 'enroll'
+  export let mode: 'enroll' | 'view' | 'edit' = 'enroll'
+  export let onClickEdit: (id?: string) => void
 
   const imageSrc = `${PUBLIC_PB_BASE_URL}/api/files/courses/${id}/${image}`
   const courseHref = `course/${id}`
@@ -27,6 +28,10 @@
         <EnrollModal courseId={id} title={`Enroll to ${title}`} action={'?/enroll'} />
       {:else if mode === 'view'}
         <a href={`/course/${id}`} class="btn btn-primary w-full">VIEW</a>
+      {:else if mode === 'edit'}
+        <button
+          class="btn btn-primary w-full"
+          on:click={() => onClickEdit && onClickEdit(id)}>EDIT</button>
       {/if}
     </div>
   </div>

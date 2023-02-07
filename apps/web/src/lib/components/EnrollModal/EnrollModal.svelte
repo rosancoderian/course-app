@@ -17,7 +17,7 @@
 <button
   on:click={toggleModal}
   class={`btn btn-primary w-full ${isLoading ? `loading` : ''}`}>
-  Enroll
+  ENROLL
 </button>
 <div class={classnames(['modal', { 'modal-open': isModalOpen }])}>
   <div class="modal-box">

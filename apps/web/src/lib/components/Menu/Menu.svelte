@@ -7,7 +7,7 @@
 
 <ul class="menu bg-base-100 w-40">
   {#each menus as menu}
-    <li class={$page.url.pathname === menu.href ? 'bordered' : ''}>
+    <li class={$page.url.pathname.includes(menu.href) ? 'bordered' : ''}>
       <a href={menu?.href}>{menu?.label}</a>
     </li>
   {/each}

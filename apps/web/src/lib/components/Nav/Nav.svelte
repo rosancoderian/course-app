@@ -1,6 +1,4 @@
 <script lang="ts">
-  import isAdmin from '$lib/utils/isAdmin'
-
   export let user: any
 </script>
 
