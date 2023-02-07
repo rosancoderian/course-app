@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "npm run serve:pb & npm run dev:web",
+    "start": "concurrently \"npm run serve:pb\" \"npm run dev:web\"" ,
     "serve:pb": " npm run serve -w @course-app/pocketbase",
     "dev:web": " npm run dev -w @course-app/web"
   },
   "workspaces": [
     "packages/*",
     "apps/*"
-  ]
+  ],
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
 }
