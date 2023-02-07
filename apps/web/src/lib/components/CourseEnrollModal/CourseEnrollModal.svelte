@@ -39,7 +39,7 @@
           }
         }}>
         <input type="hidden" name="courseId" value={courseId} />
-        <button type="submit" name="" class="btn btn-primary">Yes</button>
+        <button type="submit" class="btn btn-primary">Yes</button>
       </form>
     </div>
   </div>

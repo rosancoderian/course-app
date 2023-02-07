@@ -15,6 +15,6 @@
 <CourseGridLayout maxCol={4}>
   <CourseCreateCard />
   {#each courses as course}
-    <CourseCard {onClickEdit} mode="edit" {...course} />
+    <CourseCard mode="edit" {...course} {onClickEdit} />
   {/each}
 </CourseGridLayout>

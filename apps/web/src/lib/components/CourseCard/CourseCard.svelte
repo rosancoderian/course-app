@@ -1,6 +1,7 @@
 <script lang="ts">
   import { PUBLIC_PB_BASE_URL } from '$env/static/public'
-  import EnrollModal from '../EnrollModal/EnrollModal.svelte'
+  import CourseDeleteModal from '../CourseDeleteModal/CourseDeleteModal.svelte'
+  import CourseEnrollModal from '../CourseEnrollModal/CourseEnrollModal.svelte'
 
   export let id = ''
   export let title = ''
@@ -15,9 +16,11 @@
 </script>
 
 <div class="card min-w-64 h-72 bg-base-100 border border-base-300 shadow-xl">
-  <figure>
-    <img class="object-cover w-full h-36" src={imageSrc} alt={title} />
-  </figure>
+  <div class="bg-base-200 w-full h-36">
+    {#if image}
+      <img class="object-cover w-full h-full" src={imageSrc} alt={title} />
+    {/if}
+  </div>
   <div class="card-body p-4">
     <h2 class="card-title link"><a href={courseHref}>{title}</a></h2>
     <p>{desc}</p>
@@ -25,13 +28,22 @@
       {#if mode === 'enroll' && enrolled}
         <span class="font-bold text-primary mx-auto">EROLLED</span>
       {:else if mode === 'enroll' && !enrolled}
-        <EnrollModal courseId={id} title={`Enroll to ${title}`} action={'?/enroll'} />
+        <CourseEnrollModal
+          courseId={id}
+          title={`Enroll to ${title}`}
+          action={'?/enroll'} />
       {:else if mode === 'view'}
         <a href={`/course/${id}`} class="btn btn-primary w-full">VIEW</a>
       {:else if mode === 'edit'}
-        <button
-          class="btn btn-primary w-full"
-          on:click={() => onClickEdit && onClickEdit(id)}>EDIT</button>
+        <div class="flex gap-2 w-full">
+          <button
+            class="btn btn-primary grow"
+            on:click={() => onClickEdit && onClickEdit(id)}>EDIT</button>
+          <CourseDeleteModal
+            courseId={id}
+            title={`Delete ${title}!`}
+            action="?/deleteCourse" />
+        </div>
       {/if}
     </div>
   </div>
