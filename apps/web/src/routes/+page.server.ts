@@ -5,13 +5,16 @@ import { fail, redirect, type RequestEvent } from '@sveltejs/kit'
 
 export async function load(event: RequestEvent) {
   // TODO typing
-  let courses: any[] = toPOJO(await pb.collection('courses').getFullList())
+  let courses: any[] = toPOJO(
+    await pb.collection('courses').getFullList(undefined, { sort: '-created' })
+  )
   let enrollments: any[] = []
 
   if (event.locals.pb.authStore.isValid) {
     enrollments = toPOJO(
       await pb.collection('enrollment').getFullList(undefined, {
         filter: `user_id = "${event.locals.user.id}"`,
+        sort: '-created',
       })
     )
 
@@ -29,7 +32,7 @@ export async function load(event: RequestEvent) {
 }
 
 export const actions = {
-  enroll: async ({ locals, url, request }: RequestEvent) => {
+  enroll: async ({ locals, request }: RequestEvent) => {
     if (!locals.pb.authStore.isValid) {
       throw redirect(303, '/login')
     }

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { PUBLIC_PB_BASE_URL } from '$env/static/public'
+  import getFileUrl from '$lib/utils/getFileUrl'
   import CourseDeleteModal from '../CourseDeleteModal/CourseDeleteModal.svelte'
   import CourseEnrollModal from '../CourseEnrollModal/CourseEnrollModal.svelte'
 
@@ -11,22 +11,22 @@
   export let mode: 'enroll' | 'view' | 'edit' = 'enroll'
   export let onClickEdit: (id?: string) => void
 
-  const imageSrc = `${PUBLIC_PB_BASE_URL}/api/files/courses/${id}/${image}`
+  const imageSrc = getFileUrl('courses', id, image)
   const courseHref = `course/${id}`
 </script>
 
 <div class="card min-w-64 h-72 bg-base-100 border border-base-300 shadow-xl">
-  <div class="bg-base-200 w-full h-36">
+  <figure class="bg-base-200 w-full h-36">
     {#if image}
       <img class="object-cover w-full h-full" src={imageSrc} alt={title} />
     {/if}
-  </div>
+  </figure>
   <div class="card-body p-4">
     <h2 class="card-title link"><a href={courseHref}>{title}</a></h2>
     <p>{desc}</p>
     <div class="card-actions">
       {#if mode === 'enroll' && enrolled}
-        <span class="font-bold text-primary mx-auto">EROLLED</span>
+        <button class="btn btn-ghost hover:bg-white w-full font-bold">EROLLED</button>
       {:else if mode === 'enroll' && !enrolled}
         <CourseEnrollModal
           courseId={id}

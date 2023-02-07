@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { goto } from '$app/navigation'
   import CourseCard from '$lib/components/CourseCard/CourseCard.svelte'
   import CourseCreateCard from '$lib/components/CourseCreateCard/CourseCreateCard.svelte'
   import CourseGridLayout from '$lib/layouts/CourseGridLayout/CourseGridLayout.svelte'
@@ -8,7 +9,7 @@
   $: courses = data.courses
 
   const onClickEdit = (id: string) => {
-    console.log(id)
+    goto(`/_/courses/${id}`)
   }
 </script>
 

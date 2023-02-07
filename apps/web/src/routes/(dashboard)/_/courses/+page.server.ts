@@ -5,7 +5,9 @@ import { fail, redirect, type RequestEvent } from '@sveltejs/kit'
 
 export async function load(event: RequestEvent) {
   // TODO typing
-  let courses: any[] = toPOJO(await pb.collection('courses').getFullList())
+  let courses: any[] = toPOJO(
+    await pb.collection('courses').getFullList(undefined, { sort: '-created' })
+  )
 
   return {
     courses,

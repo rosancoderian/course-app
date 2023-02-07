@@ -10,6 +10,7 @@ export async function load(event: RequestEvent) {
   enrollments = toPOJO(
     await pb.collection('enrollment').getFullList(undefined, {
       filter: `user_id = "${event.locals.user.id}"`,
+      sort: '-created',
     })
   )
 
