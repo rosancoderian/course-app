@@ -1,4 +1,6 @@
 <script lang="ts">
+  import isAdmin from '$lib/utils/isAdmin'
+
   export let user: any
 </script>
 
@@ -28,16 +30,18 @@
           <ul
             tabindex="0"
             class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-            <li>
-              <a href="#" class="justify-between text-base-300 font-bold text-xs"
-                >User Menu</a>
-            </li>
-            <!-- <li>
+            {#if !user.isAdmin}
+              <li>
+                <a href="#" class="justify-between text-base-300 font-bold text-xs"
+                  >User Menu</a>
+              </li>
+              <!-- <li>
               <a href="/my/profile" class="justify-between">My Profile</a>
             </li> -->
-            <li>
-              <a href="/my/courses" class="justify-between">My Courses</a>
-            </li>
+              <li>
+                <a href="/my/courses" class="justify-between">My Courses</a>
+              </li>
+            {/if}
 
             {#if user.isAdmin}
               <li class="border-t">
