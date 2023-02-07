@@ -8,6 +8,5 @@
   <span slot="subTitle">
     Or <a href="/register" class="link">Register </a> a new account
   </span>
-
   <LoginForm />
 </AuthLayout>
