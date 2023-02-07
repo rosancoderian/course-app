@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "./pocketbase serve"
+    "serve": "chmod +x pocketbase & ./pocketbase serve"
   },
   "author": "",
   "license": "ISC"
