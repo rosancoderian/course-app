@@ -23,7 +23,7 @@
   </figure>
   <div class="card-body p-4">
     <h2 class="card-title link"><a href={courseHref}>{title}</a></h2>
-    <p>{desc}</p>
+    <p class="truncate">{desc}</p>
     <div class="card-actions">
       {#if mode === 'enroll' && enrolled}
         <button class="btn btn-ghost hover:bg-white w-full font-bold">EROLLED</button>
