@@ -2,7 +2,7 @@
   export let items: { label: string; href?: string }[] = []
 </script>
 
-<div class="text-sm breadcrumbs">
+<div class="text-sm breadcrumbs overflow-hidden">
   <ul>
     {#each items as item}
       <li>
