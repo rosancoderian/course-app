@@ -22,3 +22,22 @@ export const load = async ({ locals, params }: RequestEvent) => {
 
   return { chapters }
 }
+
+export const actions = {
+  deleteChapter: async ({ locals, request, params }: RequestEvent) => {
+    if (!params.courseId) {
+      throw redirect(303, '/_/courses')
+    }
+
+    const body = toPOJO(Object.fromEntries(await request.formData()))
+
+    try {
+      await locals.pb.collection('chapters').delete(body.chapterId)
+    } catch (err: any) {
+      console.error('Error: ', err)
+      return fail(err.status, { errors: createErrors(err) })
+    }
+
+    throw redirect(303, `/_/courses/${params.courseId}/chapters`)
+  },
+}

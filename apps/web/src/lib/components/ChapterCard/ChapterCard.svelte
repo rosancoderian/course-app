@@ -1,6 +1,6 @@
 <script lang="ts">
   import getFileUrl from '$lib/utils/getFileUrl'
-  import CourseDeleteModal from '../CourseDeleteModal/CourseDeleteModal.svelte'
+  import DeleteModal from '$lib/components/DeleteModal/DeleteModal.svelte'
 
   export let id = ''
   export let title = ''
@@ -29,10 +29,11 @@
           EDIT
         </button>
 
-        <!-- <CourseDeleteModal
-          courseId={id}
+        <DeleteModal
+          {id}
+          name="chapterId"
           title={`Delete ${title}!`}
-          action="?/deleteCourse" /> -->
+          action="?/deleteChapter" />
       </div>
     </div>
   </div>

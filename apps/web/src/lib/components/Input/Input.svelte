@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Field from '../Field/Field.svelte'
+  import Field from '$lib/components/Field/Field.svelte'
 
   export let label: string
   export let name: string

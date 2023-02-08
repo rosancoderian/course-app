@@ -1,7 +1,7 @@
 <script lang="ts">
   import getFileUrl from '$lib/utils/getFileUrl'
-  import CourseDeleteModal from '../CourseDeleteModal/CourseDeleteModal.svelte'
-  import CourseEnrollModal from '../CourseEnrollModal/CourseEnrollModal.svelte'
+  import DeleteModal from '$lib/components/DeleteModal/DeleteModal.svelte'
+  import CourseEnrollModal from '$lib/components/CourseEnrollModal/CourseEnrollModal.svelte'
 
   export let id = ''
   export let title = ''
@@ -39,8 +39,9 @@
           <button
             class="btn btn-primary grow"
             on:click={() => onClickEdit && onClickEdit(id)}>EDIT</button>
-          <CourseDeleteModal
-            courseId={id}
+          <DeleteModal
+            {id}
+            name="courseId"
             title={`Delete ${title}!`}
             action="?/deleteCourse" />
         </div>

@@ -2,9 +2,10 @@
   import { applyAction, enhance } from '$app/forms'
   import classnames from 'classnames'
 
-  export let courseId: string
+  export let id: string
   export let title: string
   export let action: string
+  export let name: string
 
   let isLoading = false
   let isModalOpen = false
@@ -35,7 +36,7 @@
             applyAction(result)
           }
         }}>
-        <input type="hidden" name="courseId" value={courseId} />
+        <input type="hidden" {name} value={id} />
         <button type="submit" class="btn btn-primary">Yes</button>
       </form>
       <button on:click={toggleModal} class="btn">No</button>
