@@ -8,4 +8,4 @@
   <span class="label-text">{label}</span>
 </label>
 <slot />
-<span class="text-error">{error ? error : ''}</span>
+<span class="text-error pb-4">{error ? error : ''}</span>
