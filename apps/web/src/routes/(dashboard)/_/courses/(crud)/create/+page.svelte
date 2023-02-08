@@ -3,7 +3,9 @@
   import Alert from '$lib/components/Alert/Alert.svelte'
   import Breadcrumbs from '$lib/components/Breadcrumbs/Breadcrumbs.svelte'
   import Field from '$lib/components/Field/Field.svelte'
+  import FileInput from '$lib/components/FileIInput/FileInput.svelte'
   import Input from '$lib/components/Input/Input.svelte'
+  import TextArea from '$lib/components/TextArea/TextArea.svelte'
   import getError from '$lib/utils/getError'
 
   let errors: Record<string, any> = {}
@@ -32,12 +34,15 @@
   {/if}
   <div class="form-control w-full max-w-xl">
     <Input type="text" label="Title" name="title" error={getError(errors, 'title')} />
-    <Field name="desc" label="Desc" error={getError(errors, 'desc')}>
-      <textarea name="desc" class="textarea textarea-bordered h-24 resize-none" />
-    </Field>
-    <Field name="image" label="Image" error={getError(errors, 'image')}>
-      <input type="file" name="image" class="file-input w-full max-w-xs" />
-    </Field>
+
+    <TextArea name="desc" label="Desc" error={getError(errors, 'desc')} />
+
+    <FileInput
+      type="image"
+      label="Image"
+      name="image"
+      error={getError(errors, 'image')} />
+
     <div class="pt-8">
       <button
         type="submit"

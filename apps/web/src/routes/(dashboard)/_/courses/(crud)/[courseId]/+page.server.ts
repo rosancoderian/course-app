@@ -8,15 +8,21 @@ export const load = async ({ locals, params }: RequestEvent) => {
   }
 
   let course = null
+  let chapters = []
 
   try {
     course = toPOJO(await locals.pb.collection('courses').getOne(params.courseId))
+    chapters = toPOJO(
+      await locals.pb.collection('chapters').getFullList(undefined, {
+        filter: `course_id = "${course.id}"`,
+      })
+    )
   } catch (err: any) {
     console.error('Error: ', err)
     throw error(err.status)
   }
 
-  return { course }
+  return { course, chapters }
 }
 
 export const actions = {
@@ -29,6 +35,12 @@ export const actions = {
 
     if (image?.size <= 0) {
       formData.delete('image')
+    }
+
+    if (formData.get('is_published')) {
+      formData.set('is_published', 'true')
+    } else {
+      formData.set('is_published', 'false')
     }
 
     try {

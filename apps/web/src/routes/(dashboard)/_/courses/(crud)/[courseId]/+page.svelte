@@ -1,29 +1,38 @@
 <script lang="ts">
   import { applyAction, enhance } from '$app/forms'
+  import { page } from '$app/stores'
   import Alert from '$lib/components/Alert/Alert.svelte'
   import Breadcrumbs from '$lib/components/Breadcrumbs/Breadcrumbs.svelte'
   import Field from '$lib/components/Field/Field.svelte'
+  import FileInput from '$lib/components/FileIInput/FileInput.svelte'
   import Input from '$lib/components/Input/Input.svelte'
+  import TextArea from '$lib/components/TextArea/TextArea.svelte'
   import getError from '$lib/utils/getError'
   import getFileUrl from '$lib/utils/getFileUrl'
 
-  export let data: { course: Record<string, any> }
+  export let data: { course: Record<string, any>; chapters: any[] }
+
+  const courseId = $page.params.courseId
 
   let errors: Record<string, any> = {}
   let isLoading = false
 
   $: course = data.course
-
-  $: imageSrc = getFileUrl('courses', course.id, course.image)
+  $: imageSrc = getFileUrl('courses', courseId, course.image)
 </script>
 
-<Breadcrumbs items={[{ label: 'Courses', href: '/_/courses' }, { label: course.id }]} />
+<Breadcrumbs items={[{ label: 'Courses', href: '/_/courses' }, { label: courseId }]} />
+<div class="tabs mx-auto">
+  <a class="tab tab-bordered tab-active" href={`/_/courses/${courseId}`}> Info </a>
+  <a class="tab tab-bordered" href={`/_/courses/${courseId}/chapters`}> Chapters </a>
+</div>
+
 <form
   action="?/update"
   method="POST"
   enctype="multipart/form-data"
   class="flex flex-col items-center gap-2 pt-4"
-  use:enhance={() => {
+  use:enhance={({ data }) => {
     isLoading = true
     return async ({ result }) => {
       isLoading = false
@@ -37,6 +46,7 @@
   {#if errors?.default?.message}
     <Alert type="warning" style="max-w-xl">{errors?.default?.message}</Alert>
   {/if}
+
   <div class="form-control w-full max-w-xl">
     <Input
       type="text"
@@ -44,27 +54,30 @@
       name="title"
       value={course.title}
       error={getError(errors, 'title')} />
-    <Field name="desc" label="Desc" error={getError(errors, 'desc')}>
-      <textarea name="desc" class="textarea textarea-bordered h-24 resize-none"
-        >{course.desc}</textarea>
+
+    <TextArea
+      name="desc"
+      label="Desc"
+      value={course.desc}
+      error={getError(errors, 'desc')} />
+
+    <Field name="is_published" label="Publish" error={getError(errors, 'is_published')}>
+      <input
+        name="is_published"
+        type="checkbox"
+        class="toggle toggle-primary"
+        value="1"
+        checked={course.is_published} />
     </Field>
 
-    <Field name="image" label="Image" error={getError(errors, 'image')}>
-      {#if course.image}
-        <div class="bg-base-200 w-full h-36 border">
-          <img class="object-cover w-full h-full" src={imageSrc} alt={course.title} />
-        </div>
-        <div class="my-2">
-          <button class="btn btn-accent btn-xs" formaction="?/deleteImage">
-            REMOVE
-          </button>
-          <a class="link" href={imageSrc} target="_blank" rel="noreferrer">
-            {course.image}
-          </a>
-        </div>
-      {/if}
-      <input type="file" name="image" class="file-input w-full max-w-xs" />
-    </Field>
+    <FileInput
+      type="image"
+      label="Image"
+      name="image"
+      file={course.image}
+      src={imageSrc}
+      error={getError(errors, 'image')} />
+
     <div class="pt-8">
       <button
         type="submit"

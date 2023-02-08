@@ -1,5 +1,9 @@
+<script>
+  export let href = '#'
+</script>
+
 <a
-  href="/_/courses/create"
+  {href}
   class="card min-w-64 h-72 bg-base-100 border border-base-300 hover:shadow-xl text-base-300 hover:cursor-pointer transition-all">
   <svg
     xmlns="http://www.w3.org/2000/svg"
