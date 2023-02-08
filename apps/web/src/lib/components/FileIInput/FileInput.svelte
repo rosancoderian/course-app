@@ -3,8 +3,8 @@
 
   export let label: string
   export let name: string
-  export let src: string
-  export let file: string
+  export let src: string = ''
+  export let file: string = ''
   export let type: 'image' | 'file' = 'file'
   export let error = ''
 </script>
