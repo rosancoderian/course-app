@@ -1,9 +1,26 @@
 <script lang="ts">
+  import NProgress from 'nprogress'
+  import { navigating } from '$app/stores'
   import Nav from '$lib/components/Nav/Nav.svelte'
   import './styles.scss'
+  import 'nprogress/nprogress.css'
 
   // TODO typing
   export let data: any
+
+  NProgress.configure({
+    // Full list: https://github.com/rstacruz/nprogress#configuration
+    minimum: 0.16,
+  })
+
+  $: {
+    if ($navigating) {
+      NProgress.start()
+    }
+    if (!$navigating) {
+      NProgress.done()
+    }
+  }
 </script>
 
 <div class="min-h-full">
