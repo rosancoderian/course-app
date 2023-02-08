@@ -11,8 +11,8 @@
   export let mode: 'enroll' | 'view' | 'edit' = 'enroll'
   export let onClickEdit: (id?: string) => void
 
-  const imageSrc = getFileUrl('courses', id, image)
-  const courseHref = `course/${id}`
+  $: imageSrc = getFileUrl('courses', id, image)
+  $: courseHref = `course/${id}`
 </script>
 
 <div class="card min-w-64 h-72 bg-base-100 border border-base-300 shadow-xl">

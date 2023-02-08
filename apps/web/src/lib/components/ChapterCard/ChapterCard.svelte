@@ -8,8 +8,8 @@
   export let courseId: string
   export let onClickEdit: (id?: string) => void
 
-  const imageSrc = getFileUrl('chapters', id, image)
-  const courseHref = `/_/courses/${courseId}/chapters/${id}`
+  $: imageSrc = getFileUrl('chapters', id, image)
+  $: courseHref = `/_/courses/${courseId}/chapters/${id}`
 </script>
 
 <div class="card min-w-64 h-72 bg-base-100 border border-base-300 shadow-xl">
