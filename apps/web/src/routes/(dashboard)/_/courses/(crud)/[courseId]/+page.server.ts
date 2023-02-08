@@ -31,7 +31,7 @@ export const actions = {
 
     const formData = await request.formData()
 
-    const image = formData.get('image') as any
+    const image = formData.get('image') as Blob
 
     if (image?.size <= 0) {
       formData.delete('image')
