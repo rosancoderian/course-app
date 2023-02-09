@@ -12,7 +12,7 @@
   export let onClickEdit: (id?: string) => void
 
   $: imageSrc = getFileUrl('courses', id, image)
-  $: courseHref = `course/${id}`
+  $: courseHref = `/course/${id}`
 </script>
 
 <div class="card min-w-64 h-72 bg-base-100 border border-base-300 shadow-xl">
@@ -33,7 +33,7 @@
           title={`Enroll to ${title}`}
           action={'?/enroll'} />
       {:else if mode === 'view'}
-        <a href={`/course/${id}`} class="btn btn-primary w-full">VIEW</a>
+        <a href={courseHref} class="btn btn-primary w-full">VIEW</a>
       {:else if mode === 'edit'}
         <div class="flex gap-2 w-full">
           <button
