@@ -8,6 +8,5 @@
 </script>
 
 <Field {name} {label} {error}>
-  <textarea name="desc" class="textarea textarea-bordered h-24 resize-none"
-    >{value}</textarea>
+  <textarea {name} class="textarea textarea-bordered h-24 resize-none">{value}</textarea>
 </Field>
