@@ -38,12 +38,14 @@
   </span>
   {#if selectedChapter}
     <div class="flex flex-col justify-center justify-items-center">
-      <div>
-        <img
-          class="w-full h-48 object-cover"
-          src={getFileUrl('chapters', selectedChapter.id, selectedChapter.image)}
-          alt={selectedChapter.title} />
-      </div>
+      {#if selectedChapter.image}
+        <div>
+          <img
+            class="w-full h-48 object-cover"
+            src={getFileUrl('chapters', selectedChapter.id, selectedChapter.image)}
+            alt={selectedChapter.title} />
+        </div>
+      {/if}
       <h1 class="text-center text-3xl font-bold py-6">{selectedChapter.title}</h1>
       <div class="w-full max-w-lg mx-auto my-6 bg-base-300">
         <video class="w-full">
@@ -67,13 +69,15 @@
     </div>
   {:else}
     <div class="flex flex-col justify-center justify-items-center">
-      <div>
-        <img
-          class="w-full h-48 object-cover"
-          src={getFileUrl('courses', course.id, course.image)}
-          alt={course.title} />
-      </div>
-      <h1 class="text-center text-3xl font-bold mb-6">{course.title}</h1>
+      {#if course.image}
+        <div>
+          <img
+            class="w-full h-48 object-cover"
+            src={getFileUrl('courses', course.id, course.image)}
+            alt={course.title} />
+        </div>
+      {/if}
+      <h1 class="text-center text-3xl font-bold my-6">{course.title}</h1>
       <p class="text-center">{course.desc}</p>
       {#if !enrollment}
         <div class="flex justify-center py-6">
