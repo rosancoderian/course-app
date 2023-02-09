@@ -25,10 +25,10 @@ Pocketbase: [http://localhost:5173/](http://127.0.0.1:8090/_)
   - [x] Able to enroll
 - [x] Profile page
   - [x] Able to see enrolled courses
-- [ ] Course detail page
-  - [ ] Able to see video
-  - [ ] Able to move chapters
-  - [ ] Able to download attachment
+- [x] Course detail page
+  - [x] Able to see video
+  - [x] Able to move chapters
+  - [x] Able to download attachment
 
 ### Admin
 
@@ -36,6 +36,6 @@ Pocketbase: [http://localhost:5173/](http://127.0.0.1:8090/_)
 - [x] Dashboard page
   - [x] Course page
     - [x] Able to crud courses
-      - [ ] Able to crud chapters
-        - [ ] Able to upload videos
-        - [ ] Able to attach file
+      - [x] Able to crud chapters
+        - [x] Able to upload videos
+        - [x] Able to attach file
