@@ -58,11 +58,7 @@
       label="Image"
       error={getError(errors, 'image')} />
 
-    <FileInput
-      type="image"
-      name="media"
-      label="Media"
-      error={getError(errors, 'media')} />
+    <FileInput name="media" label="Video" error={getError(errors, 'media')} />
 
     <FileInput
       name="attachment"

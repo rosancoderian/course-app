@@ -81,8 +81,7 @@
 
     <FileInput
       name="media"
-      label="Media"
-      type="image"
+      label="Video"
       deleteAction={'?/deleteMedia'}
       file={chapter.media}
       src={mediaSrc}

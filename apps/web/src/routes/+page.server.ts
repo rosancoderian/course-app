@@ -53,6 +53,6 @@ export const actions = {
       return fail(err.status, { errors: createErrors(err) })
     }
 
-    throw redirect(303, '/')
+    throw redirect(303, `/course/${body.courseId}`)
   },
 }

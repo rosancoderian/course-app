@@ -5,6 +5,7 @@
   export let courseId: string
   export let title: string
   export let action: string
+  export let style: string = ''
 
   let isLoading = false
   let isModalOpen = false
@@ -16,7 +17,11 @@
 
 <button
   on:click={toggleModal}
-  class={`btn btn-primary w-full ${isLoading ? `loading` : ''}`}>
+  class={classnames([
+    `btn btn-primary w-full`,
+    { loading: isLoading },
+    { [style]: !!style },
+  ])}>
   ENROLL
 </button>
 <div class={classnames(['modal', { 'modal-open': isModalOpen }])}>
