@@ -26,7 +26,7 @@
 <div class="min-h-full">
   <Nav user={data.user} />
   <div class="py-10">
-    <div class="container mx-auto sm:px-6 lg:px-8">
+    <div class="container mx-auto px-2 sm:px-6 lg:px-8">
       <slot />
     </div>
   </div>
