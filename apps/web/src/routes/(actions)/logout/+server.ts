@@ -1,6 +1,6 @@
-import { redirect } from '@sveltejs/kit'
+import { redirect, type RequestEvent } from '@sveltejs/kit'
 
-export const POST = ({ locals }: any) => {
+export const POST = ({ locals }: RequestEvent) => {
   locals.pb.authStore.clear()
   locals.user = undefined
 

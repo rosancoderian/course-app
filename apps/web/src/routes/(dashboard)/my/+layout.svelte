@@ -5,11 +5,7 @@
 
 <DashboardLayout>
   <span slot="side">
-    <Menu
-      menus={[
-        // { label: 'My Profile', href: '/my/profile' },
-        { label: 'My Courses', href: '/my/courses' },
-      ]} />
+    <Menu menus={[{ label: 'My Courses', href: '/my/courses' }]} />
   </span>
   <slot />
 </DashboardLayout>

@@ -1,35 +1,11 @@
-import pb from '$lib/pocketbase/pb'
 import createErrors from '$lib/utils/createErrors'
-import toPOJO from '$lib/utils/toPOJO'
 import { fail, redirect, type RequestEvent } from '@sveltejs/kit'
 
-export async function load(event: RequestEvent) {
-  // TODO typing
-  let courses: any[] = toPOJO(
-    await pb
-      .collection('courses')
-      .getFullList(undefined, { filter: `is_published=TRUE`, sort: '-created' })
-  )
-  let enrollments: any[] = []
-
-  if (event.locals.pb.authStore.isValid) {
-    enrollments = toPOJO(
-      await pb.collection('enrollment').getFullList(undefined, {
-        filter: `user_id = "${event.locals.user.id}"`,
-        sort: '-created',
-      })
-    )
-
-    const enrolledCourseIds = enrollments.map((enrollment) => enrollment.course_id)
-
-    courses = courses.map((course) => {
-      return { ...course, enrolled: enrolledCourseIds.includes(course.id) }
-    })
-  }
+export async function load({ fetch, locals, cookies }: RequestEvent) {
+  let courses = await (await fetch(`/api/courses`)).json()
 
   return {
     courses,
-    enrollments,
   }
 }
 
